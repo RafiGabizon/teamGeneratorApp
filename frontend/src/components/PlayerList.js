@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import playersData from '../players.json'; // Import the local JSON file
 import './PlayerList.css';
 
 const PlayerList = () => {
@@ -8,16 +8,14 @@ const PlayerList = () => {
   const [groups, setGroups] = useState({ red: [], black: [], white: [] });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/players')
-      .then(response => {
-        console.log('Response data:', response.data);
-        // אם הנתונים הם מערך של שחקנים ישירות
-        setPlayers(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching players:', error);
-        setPlayers([]);
-      });
+    // Extract players from the nested structure in the JSON file
+    if (Array.isArray(playersData) && playersData.length > 0) {
+      const playerData = playersData[0]?.players || [];
+      setPlayers(playerData);
+    } else {
+      console.error('Unexpected data format:', playersData);
+      setPlayers([]);
+    }
   }, []);
 
   const handlePlayerSelect = (player) => {
@@ -41,9 +39,12 @@ const PlayerList = () => {
       return;
     }
 
-    // מחלקים את השחקנים לפי רמות ואופי
-    const sortedPlayers = [...selectedPlayers].sort((a, b) => b.level - a.level);
+    if (!selectedPlayers || selectedPlayers.length === 0) {
+      alert('No players selected.');
+      return;
+    }
 
+    const sortedPlayers = [...selectedPlayers].sort((a, b) => b.level - a.level);
     const groups = { red: [], black: [], white: [] };
     const teamCounts = { red: 0, black: 0, white: 0 };
     const teamLevels = { red: 0, black: 0, white: 0 };
@@ -55,13 +56,11 @@ const PlayerList = () => {
       teamLevels[smallestTeam] += player.level;
     });
 
-    // בדיקה האם הקבוצות מאוזנות לפי רמת השחקנים ואופי השחקנים
     balanceTeams(groups, teamLevels);
 
     setGroups(groups);
   };
 
-  // פונקציה לאיזון הקבוצות
   const balanceTeams = (groups, teamLevels) => {
     let isBalanced = false;
 
@@ -82,14 +81,12 @@ const PlayerList = () => {
             const playerB = groups[teamB].find(player => player.level < avgLevelB);
 
             if (playerA && playerB) {
-              // מחליפים שחקנים בין הקבוצות
               groups[teamA] = groups[teamA].filter(player => player !== playerA);
               groups[teamB] = groups[teamB].filter(player => player !== playerB);
 
               groups[teamA].push(playerB);
               groups[teamB].push(playerA);
 
-              // מעדכנים את רמות הקבוצות
               teamLevels[teamA] = teamLevels[teamA] - playerA.level + playerB.level;
               teamLevels[teamB] = teamLevels[teamB] - playerB.level + playerA.level;
 
@@ -115,12 +112,12 @@ const PlayerList = () => {
       <div className="player-list">
         {players.length > 0 ? (
           players.map((player, index) => (
-            <div key={player._id} className="player-item">
+            <div key={player.name} className="player-item">
               <span>{index + 1}. </span>
               <input
                 type="checkbox"
                 onChange={() => handlePlayerSelect(player)}
-                checked={selectedPlayers.some(p => p._id === player._id)}
+                checked={selectedPlayers.some(p => p.name === player.name)}
               />
               {player.name} - {player.playStyle} - רמה {player.level}
             </div>
