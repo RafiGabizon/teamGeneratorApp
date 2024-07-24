@@ -46,10 +46,10 @@ html {
 
 .header {
   width: 100%;
-  background-color: var(--referee-black);
+  background-color: #282c34;
   padding: 1rem 0;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  position: sticky;
+  position: top;
   top: 0;
   z-index: 1000;
 }
@@ -63,6 +63,16 @@ html {
   text-transform: uppercase;
   letter-spacing: 3px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: bottom;
+  width: 100%;
+  bottom: 0;
 }
 
 .player-list-container {
@@ -247,7 +257,7 @@ button:hover::after {
 
 /* Specific team styles */
 .team:nth-child(1) {
-  background: linear-gradient(135deg, var(--goal-red), #c0392b);
+  background: linear-gradient(135deg, var(--goal-red), #c0532b);
 }
 
 .team:nth-child(2) {

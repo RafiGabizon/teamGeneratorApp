@@ -119,7 +119,7 @@ const PlayerList = () => {
           ))
       }
       </div>
-      <button onClick={handleAssignTeams}>Assign to Teams</button>
+      <button onClick={handleAssignTeams}>! יאלה כוחות</button>
       <div className="teams">
         <div className="team red">
           <h3>Red Team</h3>
