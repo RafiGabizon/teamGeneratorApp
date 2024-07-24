@@ -12,11 +12,24 @@ const Player = require('./models/Player'); // ודא שהנתיב נכון
 
 // קריאת הנתונים מקובץ JSON
 const filePath = path.join(__dirname, '../frontend/src/players.json');
-const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+let data;
+
+try {
+  data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+} catch (error) {
+  console.error('Error reading or parsing JSON file:', error);
+  process.exit(1);
+}
 
 const importPlayers = async () => {
   try {
     await Player.deleteMany({});
+
+    // בדוק אם יש נתונים בנתיב
+    if (data.length === 0 || !data[0].players) {
+      console.error('No player data found in the JSON file.');
+      return;
+    }
 
     const players = data[0].players;
     console.log(`Attempting to import ${players.length} players`);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './PlayerList.css';
-import {Players} from '../players.json';
 
 const PlayerList = () => {
   const [players, setPlayers] = useState([]);
@@ -11,11 +10,14 @@ const PlayerList = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/players')
       .then(response => {
-        console.log('Server response:', response.data); // הוסף לוג כאן
-        const playerData = response.data[0].players;
-        setPlayers(playerData);
+        console.log('Response data:', response.data);
+        // אם הנתונים הם מערך של שחקנים ישירות
+        setPlayers(response.data);
       })
-      .catch(error => console.error('Error fetching players:', error));
+      .catch(error => {
+        console.error('Error fetching players:', error);
+        setPlayers([]);
+      });
   }, []);
 
   const handlePlayerSelect = (player) => {
@@ -72,8 +74,8 @@ const PlayerList = () => {
           const teamA = teamNames[i];
           const teamB = teamNames[j];
 
-          const avgLevelA = teamLevels[teamA] / groups[teamA].length;
-          const avgLevelB = teamLevels[teamB] / groups[teamB].length;
+          const avgLevelA = teamLevels[teamA] / (groups[teamA]?.length || 1);
+          const avgLevelB = teamLevels[teamB] / (groups[teamB]?.length || 1);
 
           if (Math.abs(avgLevelA - avgLevelB) > 1) {
             const playerA = groups[teamA].find(player => player.level > avgLevelA);
@@ -101,32 +103,36 @@ const PlayerList = () => {
 
   return (
     <div className="player-list-container">
-        <div className="instructions-container">
-          <h2>בחר לפחות 13 שחקנים ועד 15:</h2>
-          <ul>
-            <li>רמה 1 - הכי נמוך, רמה 5 - הכי גבוה.</li>
-            <li>אופי שחקנים - התקפי, הגנתי, אמצע מגרש, כל המגרש, שוער.</li>
-            <li>ניתן להרכיב כוחות מלפחות 13 שחקנים ועד ל-15.</li>
-          </ul>
-          <p>סה"כ שחקנים במערכת: {players.length}</p>
-        </div>
+      <div className="instructions-container">
+        <h2>בחר לפחות 13 שחקנים ועד 15:</h2>
+        <ul>
+          <li>רמה 1 - הכי נמוך, רמה 5 - הכי גבוה.</li>
+          <li>אופי שחקנים - התקפי, הגנתי, אמצע מגרש, כל המגרש, שוער.</li>
+          <li>ניתן להרכיב כוחות מלפחות 13 שחקנים ועד ל-15.</li>
+        </ul>
+        <p>סה"כ שחקנים במערכת: {players.length || 0}</p>
+      </div>
       <div className="player-list">
-        {players.map((player, index) => (
-          <div key={player.name} className="player-item">
-            <span>{index + 1}. </span>
-            <input
-              type="checkbox"
-              onChange={() => handlePlayerSelect(player)}
-              checked={selectedPlayers.some(p => p.name === player.name)}
-            />
-            {player.name} - {player.playStyle} - רמה {player.level}
-          </div>
-        ))}
+        {players.length > 0 ? (
+          players.map((player, index) => (
+            <div key={player._id} className="player-item">
+              <span>{index + 1}. </span>
+              <input
+                type="checkbox"
+                onChange={() => handlePlayerSelect(player)}
+                checked={selectedPlayers.some(p => p._id === player._id)}
+              />
+              {player.name} - {player.playStyle} - רמה {player.level}
+            </div>
+          ))
+        ) : (
+          <p>No players available</p>
+        )}
       </div>
       <button onClick={handleAssignTeams}>Assign to Teams</button>
       <div className="teams">
         <div className="team red">
-          <h3>Red<br></br>Team</h3>
+          <h3>Red<br />Team</h3>
           <ul>
             {groups.red.map((player, index) => (
               <li key={index}>{player.name}</li>
