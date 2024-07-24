@@ -8,7 +8,9 @@
       {
         "ignore": [
           "backdrop-filter",
-          "accent-color"
+          "accent-color",
+          "position: sticky",
+          "scroll-behavior"
         ]
       }
     ]

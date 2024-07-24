@@ -122,7 +122,7 @@ const PlayerList = () => {
       <button onClick={handleAssignTeams}>Assign to Teams</button>
       <div className="teams">
         <div className="team red">
-          <h3>Red<br />Team</h3>
+          <h3>Red Team</h3>
           <ul>
             {groups.red.map((player, index) => (
               <li key={index}>{player.name}</li>

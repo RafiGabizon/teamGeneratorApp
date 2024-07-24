@@ -251,11 +251,11 @@ button:hover::after {
 }
 
 .team:nth-child(2) {
-  background: linear-gradient(135deg, var(--crowd-blue), #2980b9);
+  background: linear-gradient(135deg, #2f6081, #153042);
 }
 
 .team:nth-child(3) {
-  background: linear-gradient(135deg, var(--pitch-green), var(--pitch-dark));
+  background: linear-gradient(135deg, #d7eadf ,#aac1b4);
 }
 
 /* Responsive Design */
