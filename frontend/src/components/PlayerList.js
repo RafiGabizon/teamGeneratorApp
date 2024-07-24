@@ -111,7 +111,7 @@ const PlayerList = () => {
         <h3>:רשימת השחקנים הקיימים</h3>
       </div>
       <div className="player-list">
-        {players.length > 0 ? (
+        {
           players.map((player, index) => (
             <div key={player.name} className="player-item">
               <span>{index + 1}. </span>
@@ -123,9 +123,7 @@ const PlayerList = () => {
               {player.name} - {player.playStyle} - רמה {player.level}
             </div>
           ))
-        ) : (
-          <p>No players available</p>
-        )}
+      }
       </div>
       <button onClick={handleAssignTeams}>Assign to Teams</button>
       <div className="teams">
