@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './PlayerList.css';
+import {Players} from '../players.json';
 
 const PlayerList = () => {
   const [players, setPlayers] = useState([]);

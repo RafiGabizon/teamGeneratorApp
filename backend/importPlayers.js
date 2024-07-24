@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 // חיבור ל-MongoDB
-mongoose.connect('mongodb://localhost:27017/soccer', {
+mongoose.connect(process.env.MONGOdb_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
