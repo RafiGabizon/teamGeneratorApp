@@ -4,15 +4,12 @@ const path = require('path');
 require('dotenv').config();
 
 // חיבור ל-MongoDB
-mongoose.connect(process.env.MONGOdb_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(process.env.MONGOdb_URI);
 
 const Player = require('./models/Player'); // ודא שהנתיב נכון
 
 // קריאת הנתונים מקובץ JSON
-const filePath = path.join(__dirname, '../frontend/players.json');
+const filePath = path.join(__dirname, '../frontend/src/players.json');
 const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
 const importPlayers = async () => {
