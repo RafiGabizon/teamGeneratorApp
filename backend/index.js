@@ -4,7 +4,7 @@ const cors = require('cors');
 const Player = require('./models/Player'); // Import the Player model
 
 const app = express();
-const port = 50001; // Choose your port
+const port = 0; // Choose your port
 
 app.use(cors());
 app.use(express.json());

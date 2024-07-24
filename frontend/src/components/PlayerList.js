@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import playersData from '../players.json'; // Import the local JSON file
+import playersData from '../players.json';
 import './PlayerList.css';
 
 const PlayerList = () => {
@@ -8,7 +8,6 @@ const PlayerList = () => {
   const [groups, setGroups] = useState({ red: [], black: [], white: [] });
 
   useEffect(() => {
-    // Extract players from the nested structure in the JSON file
     if (Array.isArray(playersData) && playersData.length > 0) {
       const playerData = playersData[0]?.players || [];
       setPlayers(playerData);
@@ -36,11 +35,6 @@ const PlayerList = () => {
   const handleAssignTeams = () => {
     if (selectedPlayers.length < 13 || selectedPlayers.length > 15) {
       alert('Please select 13-15 players.');
-      return;
-    }
-
-    if (!selectedPlayers || selectedPlayers.length === 0) {
-      alert('No players selected.');
       return;
     }
 
