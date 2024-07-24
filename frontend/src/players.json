@@ -26,12 +26,12 @@
     {
       "name": "דודי",
       "playStyle": "אמצע מגרש",
-      "level": 2
+      "level": 4
     },
     {
       "name": "בנפשי",
       "playStyle": "אמצע מגרש",
-      "level":3
+      "level":4
     },
     {
       "name": "מני",
@@ -56,7 +56,7 @@
     {
       "name": "ליעד",
       "playStyle": "הגנתי",
-      "level": 2
+      "level": 1
     },
     {
       "name": "אולג ד.",
@@ -76,7 +76,7 @@
     {
       "name": "דרור",
       "playStyle": "כל המגרש",
-      "level": 4
+      "level": 2
     },
     {
       "name": "שחר",
@@ -102,6 +102,26 @@
       "name": "יורי",
       "playStyle": "התקפי",
       "level": 2
+    },
+    {
+      "name": "אלכס",
+      "playStyle": "התקפי",
+      "level": 1
+    },
+    {
+      "name": "רם",
+      "playStyle": "התקפי",
+      "level": 1
+    },
+    {
+      "name": "אלון",
+      "playStyle": "אמצע מגרש",
+      "level": 4
+    },
+    {
+      "name": "אולג ב.",
+      "playStyle": "אמצע מגרש",
+      "level": 1
     }
 
 
