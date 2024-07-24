@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // חיבור ל-MongoDB
-mongoose.connect('mongodb://localhost:27017/soccer', {
+mongoose.connect(process.env.MONGOdb_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/soccer', {
 const Player = require('./models/Player'); // ודא שהנתיב נכון
 
 // קריאת הנתונים מקובץ JSON
-const filePath = path.join(__dirname, '../frontend/players.json');
+const filePath = path.join(__dirname, '../frontend/src/players.json');
 const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
 const importPlayers = async () => {
