@@ -11,6 +11,7 @@ const PlayerList = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/players')
       .then(response => {
+        console.log('Server response:', response.data); // הוסף לוג כאן
         const playerData = response.data[0].players;
         setPlayers(playerData);
       })
