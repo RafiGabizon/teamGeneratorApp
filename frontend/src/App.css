@@ -280,6 +280,7 @@ button:hover::after {
 
   .player-list {
     margin-bottom: 1rem;
+    width: 100%;
   }
 
   .player-item {
