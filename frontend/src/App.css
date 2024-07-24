@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --pitch-green: #2ecc71;
+  --pitch-dark: #27ae60;
+  --ball-white: #ecf0f1;
+  --referee-black: #2c3e50;
+  --crowd-blue: #3498db;
+  --goal-red: #e74c3c;
+  --text-color: #ffffff;
+  --accent-color: #f1c40f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: 'Roboto', sans-serif;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--pitch-green),
+    var(--pitch-green) 50px,
+    var(--pitch-dark) 50px,
+    var(--pitch-dark) 100px
+  );
+  color: var(--text-color);
+  line-height: 1.6;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.header {
+  width: 100%;
+  background-color: var(--referee-black);
+  padding: 1rem 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  color: var(--ball-white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.player-list-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--ball-white);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: var(--accent-color);
+  margin: 1.5rem 0;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.player-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.player-item {
+  background: linear-gradient(135deg, var(--ball-white), #bdc3c7);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  color: var(--referee-black);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.player-item::before {
+  content: "⚽";
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 3rem;
+  opacity: 0.1;
+  transform: rotate(-30deg);
+}
+
+.player-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.player-item input[type="checkbox"] {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--goal-red);
+}
+
+button {
+  background: var(--goal-red);
+  border: none;
+  padding: 1rem 2rem;
+  color: var(--ball-white);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 1.5rem 0;
+  align-self: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "🏆";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+  padding-right: 3rem;
+}
+
+button:hover::after {
+  opacity: 1;
+  right: 20px;
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.team {
+  flex: 1;
+  min-width: 300px;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--ball-white);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.team::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--accent-color);
+}
+
+.team:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.team h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--ball-white);
+}
+
+.team ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: right;
+}
+
+.team li {
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border-radius: 10px;
+  direction: rtl;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.team li::before {
+  content: "👕";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.team li:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(-5px);
+}
+
+/* Specific team styles */
+.team:nth-child(1) {
+  background: linear-gradient(135deg, var(--goal-red), #c0392b);
+}
+
+.team:nth-child(2) {
+  background: linear-gradient(135deg, var(--crowd-blue), #2980b9);
+}
+
+.team:nth-child(3) {
+  background: linear-gradient(135deg, var(--pitch-green), var(--pitch-dark));
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .player-list-container {
+    padding: 1.5rem;
+  }
+
+  .teams {
+    flex-direction: column;
+  }
+
+  .team {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  h2, h3 {
+    font-size: 2rem;
+  }
+
+  .player-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.8rem;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .team {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .player-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team {
+    min-width: unset;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pitch-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ball-white);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.header h1 {
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.player-item, .team {
+  animation: fadeIn 0.5s ease-in;
+}

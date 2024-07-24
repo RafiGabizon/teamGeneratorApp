@@ -1,0 +1,109 @@
+[{
+  "_id": {
+    "$oid": "66a02371059aba2754170516"
+  },
+  "players": [
+    {
+      "name": "רפי",
+      "playStyle": "כל המגרש",
+      "level": 5
+    },
+    {
+      "name": "נמרוד",
+      "playStyle": "התקפי",
+      "level": 1
+    },
+    {
+      "name": "רון",
+      "playStyle": "שוער",
+      "level": 1
+    },
+    {
+      "name": "דוד",
+      "playStyle": "התקפי",
+      "level": 3
+    },
+    {
+      "name": "דודי",
+      "playStyle": "אמצע מגרש",
+      "level": 2
+    },
+    {
+      "name": "בנפשי",
+      "playStyle": "אמצע מגרש",
+      "level":3
+    },
+    {
+      "name": "מני",
+      "playStyle": "כל המגרש",
+      "level": 3
+    },
+    {
+      "name": "יונתן",
+      "playStyle": "התקפי",
+      "level": 4
+    },
+    {
+      "name": "אלעד",
+      "playStyle": "אמצע מגרש",
+      "level": 4
+    },
+    {
+      "name": "גיל",
+      "playStyle": "כל המגרש",
+      "level": 5
+    },
+    {
+      "name": "ליעד",
+      "playStyle": "הגנתי",
+      "level": 2
+    },
+    {
+      "name": "אולג ד.",
+      "playStyle": "הגנתי",
+      "level": 2
+    },
+    {
+      "name": "אור",
+      "playStyle": "כל המגרש",
+      "level": 4
+    },
+    {
+      "name": "הדדי",
+      "playStyle": "הגנתי",
+      "level": 1
+    },
+    {
+      "name": "דרור",
+      "playStyle": "כל המגרש",
+      "level": 4
+    },
+    {
+      "name": "שחר",
+      "playStyle": "הגנתי",
+      "level": 5
+    },
+    {
+      "name": "אלי",
+      "playStyle": "כל המגרש",
+      "level": 5
+    },
+    {
+      "name": "מארק",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "נאור",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "יורי",
+      "playStyle": "התקפי",
+      "level": 2
+    }
+
+
+  ]
+}]
