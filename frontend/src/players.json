@@ -122,7 +122,34 @@
       "name": "אולג ב.",
       "playStyle": "אמצע מגרש",
       "level": 1
+    },
+    {
+      "name": "טימור",
+      "playStyle": "כל המגרש",
+      "level": 3
+    },
+    {
+      "name": "אייל",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 1
+    },
+    {
+      "name": "אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+
+    {
+      "name": "אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 5
     }
+
 
 
   ]
