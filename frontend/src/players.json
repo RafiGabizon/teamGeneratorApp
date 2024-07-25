@@ -134,23 +134,21 @@
       "level": 3
     },
     {
-      "name": "1 אורח",
+      "name": "A אורח",
       "playStyle": "אמצע מגרש",
       "level": 1
     },
     {
-      "name": "2 אורח",
+      "name": "B אורח",
       "playStyle": "אמצע מגרש",
       "level": 3
     },
 
     {
-      "name": "3 אורח",
+      "name": "C אורח",
       "playStyle": "אמצע מגרש",
       "level": 5
     }
-
-
 
   ]
 }]
