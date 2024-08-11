@@ -1,0 +1,7 @@
+{
+  "extends": ["react-app"],
+  "rules": {
+    "no-unused-expressions": "off",
+    "babel/no-unused-expressions": "off"
+  }
+}
