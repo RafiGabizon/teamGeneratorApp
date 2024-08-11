@@ -1,24 +1,28 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Player = require('./models/Player'); // Import the Player model
+const Player = require('./models/Player');
 
 const app = express();
-const port = 0; // Choose your port
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/soccer').then(() => console.log('Database connected successfully'))
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Database connected successfully'))
   .catch(err => console.error('Database connection error:', err));
 
-// Route to get all players
-app.get('/players', async (req, res) => {
+app.get('/api/players', async (req, res) => {
   try {
     const players = await Player.find();
     res.json(players);
   } catch (error) {
+    console.error('Error fetching players:', error);
     res.status(500).json({ message: error.message });
   }
 });
