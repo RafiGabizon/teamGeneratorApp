@@ -5,7 +5,7 @@
       "level": 5
     },
     {
-      "name": "נמרוד",
+      "name": "דותן",
       "playStyle": "התקפי",
       "level": 2
     },
@@ -15,27 +15,27 @@
       "level": 1
     },
     {
-      "name": "דוד",
+      "name": "ארז",
       "playStyle": "התקפי",
-      "level": 3
-    },
-    {
-      "name": "דודי",
-      "playStyle": "אמצע מגרש",
       "level": 4
     },
     {
-      "name": "בנפשי",
+      "name": "ניר",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "אופיר",
       "playStyle": "אמצע מגרש",
       "level":3
     },
     {
-      "name": "מני",
+      "name": "יעקב",
       "playStyle": "כל המגרש",
-      "level": 3
+      "level": 4
     },
     {
-      "name": "יונתן",
+      "name": "אמיר",
       "playStyle": "התקפי",
       "level": 4
     },
@@ -50,19 +50,19 @@
       "level": 5
     },
     {
-      "name": "ליעד",
+      "name": "שימי",
       "playStyle": "הגנתי",
-      "level": 1
+      "level": 3
     },
     {
-      "name": "אולג ד.",
+      "name": "שלומי",
       "playStyle": "הגנתי",
-      "level": 2
+      "level": 3
     },
     {
-      "name": "אור",
+      "name": "אריאל",
       "playStyle": "כל המגרש",
-      "level": 4
+      "level": 5
     },
     {
       "name": "הדדי",
@@ -70,14 +70,14 @@
       "level": 1
     },
     {
-      "name": "דרור",
+      "name": "אסי",
       "playStyle": "כל המגרש",
-      "level": 3
+      "level": 2
     },
     {
       "name": "שחר",
       "playStyle": "הגנתי",
-      "level": 5
+      "level": 4
     },
     {
       "name": "אלי",
@@ -85,19 +85,19 @@
       "level": 5
     },
     {
-      "name": "מארק",
+      "name": "דניאל",
+      "playStyle": "אמצע מגרש",
+      "level": 4
+    },
+    {
+      "name": "מוטי",
       "playStyle": "אמצע מגרש",
       "level": 3
     },
     {
-      "name": "נאור",
-      "playStyle": "אמצע מגרש",
-      "level": 3
-    },
-    {
-      "name": "יורי",
+      "name": "פסקל",
       "playStyle": "התקפי",
-      "level": 2
+      "level": 3
     },
     {
       "name": "אלכס",
@@ -105,28 +105,23 @@
       "level": 1
     },
     {
-      "name": "רם",
-      "playStyle": "התקפי",
-      "level": 1
-    },
-    {
-      "name": "אלון",
+      "name": "רשאד",
       "playStyle": "אמצע מגרש",
-      "level": 4
-    },
-    {
-      "name": "אולג ב.",
-      "playStyle": "אמצע מגרש",
-      "level": 1
-    },
-    {
-      "name": "טימור",
-      "playStyle": "כל המגרש",
       "level": 3
     },
     {
-      "name": "אייל",
-      "playStyle": "אמצע מגרש",
+      "name": "שפיק",
+      "playStyle": "הגנתי",
+      "level": 4
+    },
+    {
+      "name": "סתיו",
+      "playStyle": "כל המגרש",
+      "level": 5
+    },
+    {
+      "name": "תומר",
+      "playStyle": "כל המגרש",
       "level": 3
     },
     {
@@ -137,11 +132,41 @@
     {
       "name": "B אורח",
       "playStyle": "אמצע מגרש",
-      "level": 3
+      "level": 1
+    },
+    {
+      "name": "C אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 2
     },
 
     {
-      "name": "C אורח",
+      "name": "D אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 2
+    },
+    {
+      "name": "E אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "F אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 3
+    },
+    {
+      "name": "G אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 4
+    },
+    {
+      "name": "H אורח",
+      "playStyle": "אמצע מגרש",
+      "level": 4
+    },
+    {
+      "name": "I אורח",
       "playStyle": "אמצע מגרש",
       "level": 5
     }
