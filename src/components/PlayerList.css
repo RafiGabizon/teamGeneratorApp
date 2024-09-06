@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
     --primary-color: #00ff87;
@@ -7,6 +7,9 @@
     --text-color: #ffffff;
     --item-background: rgba(40, 40, 40, 0.8);
     --item-text-color: #ffffff;
+    --input-background: #2a2a2a;
+    --input-text-color: #ffffff;
+    --button-hover: #00cc6a;
 }
 
 * {
@@ -25,26 +28,10 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-    position: sticky;
-    top: 0;
-    background-color: rgba(18, 18, 18, 0.9);
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    z-index: 1000;
-}
-
-h1 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
 .player-list-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,31 +42,51 @@ h3 {
     color: var(--secondary-color);
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
-.player-list {
+.instructions-container {
+    background: var(--item-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
     width: 100%;
+}
+
+.instructions-container ul {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+.instructions-container li {
+    margin-bottom: 0.5rem;
+}
+
+.player-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
     margin-bottom: 2rem;
 }
 
-.player-item {
-    background: var(--item-background);
-    margin: 0.5rem 0;
+input[type="text"],
+input[type="number"],
+select {
+    background-color: var(--input-background);
+    color: var(--input-text-color);
+    border: none;
     padding: 0.75rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    color: var(--item-text-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    flex: 1;
+    min-width: 200px;
 }
 
-.player-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-.player-item input[type="checkbox"] {
-    margin-right: 1rem;
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+select::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 button {
@@ -93,11 +100,63 @@ button {
     transition: all 0.3s ease;
     margin: 1rem 0;
     align-self: center;
+    min-width: 150px;
 }
 
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 255, 135, 0.4);
+    background: var(--button-hover);
+}
+
+.player-list {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.player-item {
+    background: var(--item-background);
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    color: var(--item-text-color);
+    flex-wrap: wrap;
+}
+
+.player-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 500px;
+    min-width: 90px;
+}
+
+.player-item input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+.player-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: 5px;
+}
+
+.player-actions button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-width: auto;
 }
 
 .teams {
@@ -106,59 +165,62 @@ button:hover {
     flex-wrap: nowrap;
     width: 100%;
     margin-top: 2rem;
+    gap: 1rem;
 }
 
 .team {
     flex: 1;
-    margin: 0 0.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .team h3 {
     text-align: center;
     margin-bottom: 1rem;
+    color: var(--background-color);
 }
 
 .team ul {
     list-style-type: none;
     padding: 0;
-    text-align: right;
+    text-align: center;
 }
 
 .team li {
     padding: 0.5rem;
     margin: 0.5rem 0;
     border-radius: 5px;
-    direction: rtl;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Specific team styles */
-.team:nth-child(1) {
+.team.red {
     background-color: #ff4d4d;
-    color: white;
 }
 
-.team:nth-child(2) {
+.team.black {
     background-color: #333333;
-    color: white;
 }
 
-.team:nth-child(3) {
+.team.white {
     background-color: #e0e0e0;
-    color: black;
-    border: 2px solid #333333;
+    color: #333333;
 }
 
-/* Responsive Design */
+.team.white h3,
+.team.white li {
+    color: #333333;
+}
+
 @media screen and (max-width: 768px) {
     .player-list-container {
-        padding: 0.5rem;
-    }
-
-    h1 {
-        font-size: 2rem;
+        padding: 1rem;
     }
 
     .teams {
@@ -170,21 +232,27 @@ button:hover {
     }
 
     .player-item {
-        flex-direction: row;
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .player-info {
+        margin-bottom: 0.5rem;
+    }
+
+    .player-actions {
+        margin-top: 0.5rem;
+        width: 100%;
+        justify-content: flex-end;
     }
 }
 
-/* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Improve touch and click areas on mobile */
 button,
 .player-item,
 .team li {
     min-height: 44px;
 }
-
-/* Prevent text size adjustment on orientation change */
