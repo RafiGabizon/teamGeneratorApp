@@ -134,10 +134,19 @@ button:hover {
 
 .player-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex: 1;
-    min-width: 500px;
-    min-width: 90px;
+    min-width: 200px;
+}
+
+.player-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.player-details span {
+    margin-bottom: 0.25rem;
 }
 
 .player-item input[type="checkbox"] {

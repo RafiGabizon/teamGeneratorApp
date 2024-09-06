@@ -123,7 +123,11 @@ const PlayerList = () => {
                   onChange={() => handlePlayerSelect(player)}
                   checked={selectedPlayers.some(p => p.name === player.name)}
                 />
-                <span>{index + 1}. {player.name} - {player.playStyle} - רמה {player.level}</span>
+                <div className="player-details">
+                  <span>{index + 1}. {player.name}</span>
+                  <span>אופי משחק: {player.playStyle}</span>
+                  <span>רמה: {player.level}</span>
+                </div>
               </div>
               <div className="player-actions">
                 <button onClick={() => handleEditPlayer(index)}>ערוך</button>
