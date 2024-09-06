@@ -7,9 +7,6 @@
       "default",
       {
         "ignore": [
-          "backdrop-filter",
-          "accent-color",
-          "position: sticky",
           "scroll-behavior"
         ]
       }
