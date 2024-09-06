@@ -7,7 +7,9 @@
       "default",
       {
         "ignore": [
-          "scroll-behavior"
+          "scroll-behavior",
+          "backdrop-filter",
+          "accent-color"
         ]
       }
     ]
