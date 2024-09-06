@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PlayerList.css';
 
 const PlayerList = () => {
   const [players, setPlayers] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([]);
-  const [groups, setGroups] = useState({ red: [], black: [], white: [] });
+  const [groups, setGroups] = useState({ אדומה: [], שחורה: [], לבנה: [] });
   const [newPlayer, setNewPlayer] = useState({ name: '', level: 1, playStyle: '' });
   const [editingPlayerIndex, setEditingPlayerIndex] = useState(null);
 
   const playStyles = ['התקפי', 'הגנתי', 'שוער', 'כל המגרש', 'אמצע המגרש'];
+
+  // טעינת השחקנים מ-localStorage כאשר הקומפוננטה נטענת לראשונה
+  useEffect(() => {
+    const storedPlayers = JSON.parse(localStorage.getItem('players'));
+    if (storedPlayers) {
+      setPlayers(storedPlayers);
+    }
+  }, []);
+
+  // שמירת השחקנים ב-localStorage בכל פעם שרשימת השחקנים מתעדכנת
+  useEffect(() => {
+    localStorage.setItem('players', JSON.stringify(players));
+  }, [players]);
 
   const handlePlayerSelect = (player) => {
     setSelectedPlayers(prev => {
@@ -29,7 +42,7 @@ const PlayerList = () => {
     }
 
     const sortedPlayers = [...selectedPlayers].sort((a, b) => b.level - a.level);
-    const newGroups = { red: [], black: [], white: [] };
+    const newGroups = { אדומה: [], שחורה: [], לבנה: [] };
 
     sortedPlayers.forEach((player, index) => {
       const teamIndex = index % 3;
@@ -71,14 +84,14 @@ const PlayerList = () => {
   return (
     <div className="player-list-container">
       <div className="instructions-container">
-        <h2>בחר לפחות 13 שחקנים ועד 15:</h2>
+        <h2>בחר בין 13 ל-15 שחקנים:</h2>
         <ul>
           <li>רמה 1 - הכי נמוך, רמה 5 - הכי גבוה.</li>
           <li>אופי שחקנים - התקפי, הגנתי, שוער, כל המגרש, אמצע המגרש.</li>
-          <li>ניתן להרכיב כוחות מלפחות 13 שחקנים ועד ל-15.</li>
+          <li>יש לבחור לפחות 13 שחקנים ולא יותר מ-15.</li>
         </ul>
 
-        <h3>{editingPlayerIndex !== null ? 'עריכת שחקן' : 'הוספת שחקן חדש'}:</h3>
+        <h3>{editingPlayerIndex !== null ? 'עריכת שחקן' : 'הוספת שחקן חדש'}</h3>
         <div className="player-form">
           <input
             type="text"
@@ -98,7 +111,7 @@ const PlayerList = () => {
             value={newPlayer.playStyle}
             onChange={(e) => setNewPlayer({ ...newPlayer, playStyle: e.target.value })}
           >
-            <option value="">בחר אופי</option>
+            <option value="">בחר אופי משחק</option>
             {playStyles.map((style) => (
               <option key={style} value={style}>{style}</option>
             ))}
@@ -108,11 +121,11 @@ const PlayerList = () => {
           </button>
         </div>
 
-        <h3>רשימת השחקנים הקיימים:</h3>
+        <h3>רשימת השחקנים:</h3>
       </div>
       
       {players.length === 0 ? (
-        <p>לא נוספו שחקנים למערכת.</p>
+        <p className="no-players">לא נוספו שחקנים למערכת.</p>
       ) : (
         <div className="player-list">
           {players.map((player, index) => (
@@ -124,9 +137,9 @@ const PlayerList = () => {
                   checked={selectedPlayers.some(p => p.name === player.name)}
                 />
                 <div className="player-details">
-                  <span>{index + 1}. {player.name}</span>
-                  <span>אופי משחק: {player.playStyle}</span>
-                  <span>רמה: {player.level}</span>
+                  <span className="player-name">{player.name}</span>
+                  <span className="player-style">{player.playStyle}</span>
+                  <span className="player-level">רמה: {player.level}</span>
                 </div>
               </div>
               <div className="player-actions">
@@ -138,12 +151,12 @@ const PlayerList = () => {
         </div>
       )}
 
-      <button onClick={handleAssignTeams}>! יאלה כוחות</button>
+      <button className="assign-teams-button" onClick={handleAssignTeams}>יאללה כוחות!</button>
       
       <div className="teams">
         {Object.entries(groups).map(([color, teamPlayers]) => (
-          <div key={color} className={`team ${color}`}>
-            <h3>{color} Team</h3>
+          <div key={color} className={`team ${color === 'אדומה' ? 'red' : color === 'שחורה' ? 'black' : 'white'}`}>
+            <h3>קבוצה {color}</h3>
             <ul>
               {teamPlayers.map((player, index) => (
                 <li key={index}>{player.name}</li>

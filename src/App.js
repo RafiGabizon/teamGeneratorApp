@@ -1,12 +1,16 @@
 import React from 'react';
 import PlayerList from './components/PlayerList';
 import './App.css';
+import logo from './SoccerTeamGen.png';
 
 function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1>מערכת בחירת כוחות</h1>
+        <div className="logo-container">
+          <img src={logo} alt="לוגו מערכת בחירת כוחות" className="logo" />
+          <h1>מערכת בחירת כוחות</h1>
+        </div>
       </header>
       <main>
         <PlayerList />

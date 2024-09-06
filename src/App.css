@@ -20,13 +20,11 @@
 body,
 html {
   font-family: 'Roboto', sans-serif;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--pitch-green),
-    var(--pitch-green) 50px,
-    var(--pitch-dark) 50px,
-    var(--pitch-dark) 100px
-  );
+  background: repeating-linear-gradient(45deg,
+      var(--pitch-green),
+      var(--pitch-green) 50px,
+      var(--pitch-dark) 50px,
+      var(--pitch-dark) 100px);
   color: var(--text-color);
   line-height: 1.6;
   height: 100%;
@@ -41,17 +39,32 @@ html {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 .header {
   width: 100%;
   background-color: #282c34;
   padding: 1rem 0;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  position: top;
-  top: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
   z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  margin-left: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .header h1 {
@@ -62,7 +75,8 @@ html {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: bounce 2s ease infinite;
 }
 
 .footer {
@@ -70,7 +84,6 @@ html {
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: bottom;
   width: 100%;
   bottom: 0;
 }
@@ -79,21 +92,22 @@ html {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 2rem;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   border: 2px solid var(--ball-white);
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-h2, h3 {
+h2,
+h3 {
   font-family: 'Oswald', sans-serif;
   color: var(--accent-color);
   margin: 1.5rem 0;
   text-align: center;
   font-size: 2.2rem;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .player-list {
@@ -111,7 +125,7 @@ h2, h3 {
   align-items: center;
   transition: all 0.3s ease;
   color: var(--referee-black);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -128,7 +142,7 @@ h2, h3 {
 
 .player-item:hover {
   transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .player-item input[type="checkbox"] {
@@ -153,7 +167,7 @@ button {
   align-self: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -195,10 +209,10 @@ button:hover::after {
   padding: 2rem;
   border-radius: 20px;
   transition: all 0.3s ease;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 2px solid var(--ball-white);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -215,7 +229,7 @@ button:hover::after {
 
 .team:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .team h3 {
@@ -236,7 +250,7 @@ button:hover::after {
   margin: 0.8rem 0;
   border-radius: 10px;
   direction: rtl;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   position: relative;
 }
@@ -251,7 +265,7 @@ button:hover::after {
 }
 
 .team li:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateX(-5px);
 }
 
@@ -265,7 +279,7 @@ button:hover::after {
 }
 
 .team:nth-child(3) {
-  background: linear-gradient(135deg, #d7eadf ,#aac1b4);
+  background: linear-gradient(135deg, #d7eadf, #aac1b4);
 }
 
 /* Responsive Design */
@@ -302,6 +316,19 @@ button:hover::after {
   .player-item input[type="checkbox"] {
     margin-right: 0;
     margin-bottom: 0.5rem;
+  }
+
+  .logo-container {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
   }
 }
 
@@ -345,19 +372,28 @@ button:hover::after {
 
 /* Animations */
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
 
-.header h1 {
-  animation: bounce 2s ease infinite;
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-.player-item, .team {
+.player-item,
+.team {
   animation: fadeIn 0.5s ease-in;
 }
