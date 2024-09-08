@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayerList from './components/PlayerList';
+import MainPlayerList from './components/MainPlayerList'; // ייבוא קומפוננטת הרשימה הראשית
 import './App.css';
 import logo from './SoccerTeamGen.png';
 
@@ -13,7 +13,7 @@ function App() {
         </div>
       </header>
       <main>
-        <PlayerList />
+        <MainPlayerList /> {/* קומפוננטת הרשימה הראשית */}
       </main>
       <footer className="footer">
         <p>© כל הזכויות שמורות לרפי גביזון</p>

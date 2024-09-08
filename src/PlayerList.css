@@ -1,4 +1,6 @@
 .player-list-container {
+    flex-direction: column;
+    align-items: center;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
@@ -8,7 +10,10 @@
     border: 2px solid var(--ball-white);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-
+.player-list-container h3 {
+    margin-bottom: 20px;
+    align-items: center;
+}
 h2,
 h3 {
     font-family: 'Oswald', sans-serif;
@@ -103,9 +108,15 @@ button {
 }
 
 .add-player-button {
+    display: block;
+    align-items: center;
     width: 30%;
     align-self: stretch;
     margin-top: 1rem;
+    align-self: center;
+}
+.add-player-button::after {
+    content: none;
 }
 
 button::after {
@@ -132,10 +143,12 @@ button:hover::after {
 }
 
 .player-list {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     padding: 1rem;
+    align-items: center;
 }
 
 .player-item {
@@ -205,6 +218,14 @@ button:hover::after {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     min-width: auto;
+}
+.player-actions button::after {
+    content: none;
+}
+.player-actions button:hover {
+    transform: none;
+    box-shadow: none;
+    padding-right: 1rem;
 }
 
 .assign-teams-button {
@@ -302,12 +323,14 @@ button:hover::after {
 }
 
 .no-players {
+    width: 100%;
     text-align: center;
     color: var(--accent-color);
     margin: 2rem 0;
     font-size: 1.5rem;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    align-self: center;
 }
 
 .checkbox-container {
@@ -403,6 +426,10 @@ button:hover::after {
     
         @media screen and (max-width: 480px) {
 
+            .player-actions button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
 
             .add-player-button {
                 width: 100%;
