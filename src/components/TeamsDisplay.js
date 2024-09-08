@@ -1,6 +1,6 @@
 import React from 'react';
 import '../PlayerList.css';
-import logo from '../BlueTeam.png';
+// import logo from '../BlueTeam.png';
 
 const TeamsDisplay = ({ groups }) => {
   return (
