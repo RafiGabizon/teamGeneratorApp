@@ -15,7 +15,8 @@
     align-items: center;
 }
 h2,
-h3 {
+h3,
+h5 {
     font-family: 'Oswald', sans-serif;
     color: var(--accent-color);
     margin: 1.5rem 0;
