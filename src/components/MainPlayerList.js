@@ -37,21 +37,68 @@ const MainPlayerList = () => {
 
   const handleAssignTeams = () => {
     if (selectedPlayers.length < 13 || selectedPlayers.length > 15) {
-      alert('נא לבחור בין 13 ל-15 שחקנים.');
-      return;
+        alert('נא לבחור בין 13 ל-15 שחקנים.');
+        return;
     }
 
     const sortedPlayers = [...selectedPlayers].sort((a, b) => b.level - a.level);
-    const newGroups = { אדומה: [], שחורה: [], לבנה: [] };
 
-    sortedPlayers.forEach((player, index) => {
-      const teamIndex = index % 3;
-      const team = Object.keys(newGroups)[teamIndex];
-      newGroups[team].push(player);
+    // Group players by role
+    const groupedByRole = {
+        שוער: [],
+        הגנה: [],
+        התקפה: [],
+        אמצע: [],
+        כל: []
+    };
+
+    sortedPlayers.forEach(player => {
+        if (groupedByRole[player.playStyle]) {
+            groupedByRole[player.playStyle].push(player);
+        } else {
+            console.warn(`Unknown playStyle: ${player.playStyle}`);
+        }
     });
 
+    const newGroups = { אדומה: [], שחורה: [], לבנה: [] };
+    const teams = Object.keys(newGroups);
+    
+    const fillTeams = (players) => {
+        let teamIndex = 0;
+        players.forEach(player => {
+            while (newGroups[teams[teamIndex]].length >= 5) {
+                teamIndex = (teamIndex + 1) % teams.length;
+            }
+            newGroups[teams[teamIndex]].push(player);
+            teamIndex = (teamIndex + 1) % teams.length;
+        });
+    };
+
+    // Add players by role to each team ensuring team size limit
+    const roles = Object.keys(groupedByRole);
+    roles.forEach(role => {
+        const playersByRole = groupedByRole[role];
+        let teamIndex = 0;
+        while (playersByRole.length > 0) {
+            if (newGroups[teams[teamIndex]].length < 5) {
+                newGroups[teams[teamIndex]].push(playersByRole.shift());
+            } else {
+                teamIndex = (teamIndex + 1) % teams.length;
+            }
+        }
+    });
+
+    // Add remaining players ensuring all teams are filled up to 5
+    const remainingPlayers = sortedPlayers.filter(player => 
+        !teams.some(team => newGroups[team].includes(player))
+    );
+
+    fillTeams(remainingPlayers);
+
     setGroups(newGroups);
-  };
+};
+
+
 
   const handleAddOrEditPlayer = () => {
     if (!newPlayer.name || !newPlayer.playStyle) {
