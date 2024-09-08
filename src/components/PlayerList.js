@@ -27,7 +27,7 @@ const PlayerList = ({ players, selectedPlayers, handlePlayerSelect, handleEditPl
       </div>
             {players.length > 0 ? (
           <h5>{`נבחרו ${selectedPlayers.length} מתוך ${players.length} שחקנים שברשימה .`}</h5>
-        ):(<h1></h1>)}
+        ):(<h1> </h1>)}
     </div>
   );
 };
