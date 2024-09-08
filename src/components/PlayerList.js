@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import '../PlayerList.css';
+
 
 const PlayerList = () => {
   const [players, setPlayers] = useState([]);
@@ -10,7 +12,6 @@ const PlayerList = () => {
 
   const playStyles = ['התקפי', 'הגנתי', 'שוער', 'כל המגרש', 'אמצע המגרש'];
 
-  // טעינת השחקנים מ-localStorage כאשר הקומפוננטה נטענת לראשונה
   useEffect(() => {
     const storedPlayers = JSON.parse(localStorage.getItem('players'));
     if (storedPlayers) {
@@ -18,18 +19,17 @@ const PlayerList = () => {
     }
   }, []);
 
-  // שמירת השחקנים ב-localStorage בכל פעם שרשימת השחקנים מתעדכנת
   useEffect(() => {
     localStorage.setItem('players', JSON.stringify(players));
   }, [players]);
 
   const handlePlayerSelect = (player) => {
-    setSelectedPlayers(prev => {
-      const playerIndex = prev.findIndex(p => p.name === player.name);
-      if (playerIndex === -1 && prev.length < 15) {
+    setSelectedPlayers((prev) => {
+      const isSelected = prev.some(p => p.name === player.name);
+      if (!isSelected && prev.length < 15) {
         return [...prev, player];
-      } else if (playerIndex !== -1) {
-        return prev.filter((_, index) => index !== playerIndex);
+      } else if (isSelected) {
+        return prev.filter(p => p.name !== player.name);
       }
       return prev;
     });
@@ -93,30 +93,32 @@ const PlayerList = () => {
 
         <h3>{editingPlayerIndex !== null ? 'עריכת שחקן' : 'הוספת שחקן חדש'}</h3>
         <div className="player-form">
-          <input
-            type="text"
-            placeholder="שם השחקן"
-            value={newPlayer.name}
-            onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })}
-          />
-          <input
-            type="number"
-            placeholder="רמה (1-5)"
-            value={newPlayer.level}
-            min="1"
-            max="5"
-            onChange={(e) => setNewPlayer({ ...newPlayer, level: parseInt(e.target.value) })}
-          />
-          <select
-            value={newPlayer.playStyle}
-            onChange={(e) => setNewPlayer({ ...newPlayer, playStyle: e.target.value })}
-          >
-            <option value="">בחר אופי משחק</option>
-            {playStyles.map((style) => (
-              <option key={style} value={style}>{style}</option>
-            ))}
-          </select>
-          <button onClick={handleAddOrEditPlayer}>
+          <div className="form-row">
+            <input
+              type="text"
+              placeholder="שם השחקן"
+              value={newPlayer.name}
+              onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })}
+            />
+            <input
+              type="number"
+              placeholder="רמה (1-5)"
+              value={newPlayer.level}
+              min="1"
+              max="5"
+              onChange={(e) => setNewPlayer({ ...newPlayer, level: parseInt(e.target.value) })}
+            />
+            <select
+              value={newPlayer.playStyle}
+              onChange={(e) => setNewPlayer({ ...newPlayer, playStyle: e.target.value })}
+            >
+              <option value="">בחר אופי משחק</option>
+              {playStyles.map((style) => (
+                <option key={style} value={style}>{style}</option>
+              ))}
+            </select>
+          </div>
+          <button className="add-player-button" onClick={handleAddOrEditPlayer}>
             {editingPlayerIndex !== null ? 'עדכן שחקן' : 'הוסף שחקן'}
           </button>
         </div>
@@ -131,11 +133,14 @@ const PlayerList = () => {
           {players.map((player, index) => (
             <div key={player.name} className="player-item">
               <div className="player-info">
-                <input
-                  type="checkbox"
-                  onChange={() => handlePlayerSelect(player)}
-                  checked={selectedPlayers.some(p => p.name === player.name)}
-                />
+                <label className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    onChange={() => handlePlayerSelect(player)}
+                    checked={selectedPlayers.some(p => p.name === player.name)}
+                  />
+                  <span className="checkmark"></span>
+                </label>
                 <div className="player-details">
                   <span className="player-name">{player.name}</span>
                   <span className="player-style">{player.playStyle}</span>
@@ -143,8 +148,8 @@ const PlayerList = () => {
                 </div>
               </div>
               <div className="player-actions">
-                <button onClick={() => handleEditPlayer(index)}>ערוך</button>
-                <button onClick={() => handleDeletePlayer(index)}>מחק</button>
+                <button className="edit-button" onClick={() => handleEditPlayer(index)}>ערוך</button>
+                <button className="delete-button" onClick={() => handleDeletePlayer(index)}>מחק</button>
               </div>
             </div>
           ))}
