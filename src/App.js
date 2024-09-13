@@ -18,7 +18,8 @@ function App() {
 
   const handleWhatsappClick = (event) => {
     event.preventDefault();
-    window.open('https://wa.me/+972525754567', '_blank'); // החלף את yourphonenumber עם מספר הטלפון שלך בוואטסאפ
+    const message = encodeURIComponent('שלום רפי, רציתי ליצור איתך קשר.');
+    window.open(`https://wa.me/+972525754567?text=${message}`, '_blank');
   };
 
   return (
@@ -39,10 +40,10 @@ function App() {
             רפי גביזון
           </button>
           <button onClick={handleLinkedinClick} className="pdf-link-button">
-            <FaLinkedin />
+            <FaLinkedin style={{ color: '#0077B5' }} />
           </button>
           <button onClick={handleWhatsappClick} className="pdf-link-button">
-            <FaWhatsapp />
+            <FaWhatsapp style={{ color: '#25D366' }} />
           </button>
         </p>
       </footer>

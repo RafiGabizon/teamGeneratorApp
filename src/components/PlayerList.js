@@ -14,6 +14,11 @@ const PlayerList = ({
   return (
     <div className="player-list-container">
       <h3>רשימת השחקנים :</h3>
+          <div className="select-all-button-container">
+            <button className="select-all-button" onClick={toggleSelectAllPlayers}>
+              {allSelected ? 'נקה בחירות' : 'בחר בכולם'}
+            </button>
+          </div>
       <div className="player-list">
         {players.length === 0 ? (
           <p className="no-players">לא נוספו שחקנים למערכת.</p>
@@ -34,11 +39,6 @@ const PlayerList = ({
       {players.length > 0 && (
         <>
           <h5>{`נבחרו ${selectedPlayers.length} מתוך ${players.length} שחקנים שברשימה.`}</h5>
-          <div className="select-all-button-container">
-            <button className="select-all-button" onClick={toggleSelectAllPlayers}>
-              {allSelected ? 'נקה בחירה' : 'בחר הכל'}
-            </button>
-          </div>
         </>
       )}
     </div>

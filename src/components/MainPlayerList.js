@@ -8,7 +8,7 @@ import Instructions from './Instructions';
 const MainPlayerList = () => {
   const [players, setPlayers] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([]);
-  const [groups, setGroups] = useState({ אדומה: [],שחורה: [], לבנה: [] });
+  const [groups, setGroups] = useState({ אדומה: [], שחורה: [], לבנה: [] });
   const [newPlayer, setNewPlayer] = useState({ name: '', level: 1, playStyle: '' });
   const [editingPlayerIndex, setEditingPlayerIndex] = useState(null);
 
@@ -35,12 +35,10 @@ const MainPlayerList = () => {
     });
   };
 
-   const toggleSelectAllPlayers = () => {
+  const toggleSelectAllPlayers = () => {
     if (selectedPlayers.length === players.length) {
-      // אם כל השחקנים נבחרו, נבטל את הבחירה בכולם
       setSelectedPlayers([]);
     } else {
-      // אם לא כל השחקנים נבחרו, נבחר את כולם
       setSelectedPlayers(players);
     }
   };
@@ -53,7 +51,6 @@ const MainPlayerList = () => {
 
     const sortedPlayers = [...selectedPlayers].sort((a, b) => b.level - a.level);
 
-    // Group players by role
     const groupedByRole = {
         שוער: [],
         הגנה: [],
@@ -84,7 +81,6 @@ const MainPlayerList = () => {
         });
     };
 
-    // Add players by role to each team ensuring team size limit
     const roles = Object.keys(groupedByRole);
     roles.forEach(role => {
         const playersByRole = groupedByRole[role];
@@ -98,7 +94,6 @@ const MainPlayerList = () => {
         }
     });
 
-    // Add remaining players ensuring all teams are filled up to 5
     const remainingPlayers = sortedPlayers.filter(player => 
         !teams.some(team => newGroups[team].includes(player))
     );
@@ -106,9 +101,7 @@ const MainPlayerList = () => {
     fillTeams(remainingPlayers);
 
     setGroups(newGroups);
-};
-
-
+  };
 
   const handleAddOrEditPlayer = () => {
     if (!newPlayer.name || !newPlayer.playStyle) {
@@ -138,12 +131,13 @@ const MainPlayerList = () => {
     setPlayers(updatedPlayers);
   };
 
+  const handleClearTeams = () => {
+    setGroups({ אדומה: [], שחורה: [], לבנה: [] });
+  };
+
   return (
-    
     <div className="player-list-container">
-    
-    <Instructions />
-        
+      <Instructions />
       <PlayerForm
         newPlayer={newPlayer}
         setNewPlayer={setNewPlayer}
@@ -157,14 +151,13 @@ const MainPlayerList = () => {
         handleEditPlayer={handleEditPlayer}
         handleDeletePlayer={handleDeletePlayer}
         toggleSelectAllPlayers={toggleSelectAllPlayers}
-        
       />
       <div className="assign-teams-button-container">
         <button className="assign-teams-button" onClick={handleAssignTeams}>
           יאללה כוחות!
         </button>
       </div>
-      <TeamsDisplay groups={groups} />
+      <TeamsDisplay groups={groups} clearTeams={handleClearTeams} />
     </div>
   );
 };
