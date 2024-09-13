@@ -3,11 +3,17 @@ import MainPlayerList from './components/MainPlayerList';
 import './App.css';
 import logo from './assets/SoccerTeamGen.png';
 import pdfFile from './assets/Rafi Gabizon CV_FullStack.pdf';
+import { FaLinkedin } from "react-icons/fa";
 
 function App() {
   const handlePdfClick = (event) => {
     event.preventDefault();
     window.open(pdfFile, '_blank');
+  };
+
+  const handleLinkedinClick = (event) => {
+    event.preventDefault();
+    window.open('https://www.linkedin.com/in/rafigabizon', '_blank');
   };
 
   return (
@@ -24,9 +30,11 @@ function App() {
       <footer className="footer">
         <p>
           © כל הזכויות שמורות ל
-          <a href={pdfFile} onClick={handlePdfClick}>
+          <button onClick={handlePdfClick} className="pdf-link-button">
             רפי גביזון
-          </a>
+          </button>   |   <button onClick={handleLinkedinClick} className="pdf-link-button">
+            <FaLinkedin />
+          </button>
         </p>
       </footer>
     </div>

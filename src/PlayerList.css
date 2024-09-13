@@ -462,6 +462,56 @@ button:hover::after {
     transform: rotate(45deg);
 }
 
+.pdf-link-button {
+    background: none;
+    /* מבטל את הרקע של הכפתור */
+    border: none;
+    /* מסיר את הגבול של הכפתור */
+    color: blue;
+    /* צבע טקסט הכפתור כמו בקישור רגיל */
+    text-decoration: underline;
+    /* מדגיש את הטקסט של הכפתור */
+    cursor: pointer;
+    /* משנה את הסמן של העכבר למצב של יד */
+    padding: 0;
+    /* מסיר את הריפוד (padding) */
+    font: inherit;
+    /* משתמש בגופן של התצוגה ההורית (כמו קישור) */
+    position: relative;
+    /* מאפשר למקם אלמנטים יחסיים לתוך הכפתור */
+    box-shadow: none;
+}
+
+.pdf-link-button:focus {
+    outline: none;
+    /* מסיר את התיחום שמופיע בעת מיקוד על הכפתור */
+}
+
+.pdf-link-button::after {
+    content: "";
+    /* מבטל כל תוכן נוסף */
+    position: absolute;
+    /* מבטל את התיחום שמופיע בעת מיקוד על הכפתור */
+    top: 0;
+    right: 0;
+    transform: none;
+    font-size: initial;
+    opacity: 1;
+    transition: none;
+}
+
+.pdf-link-button:hover {
+    background: none;
+    /* מבטל את הרקע בזמן ריחוף */
+    outline: none;
+    /* מסיר את התיחום בזמן ריחוף */
+    transform: none;
+    box-shadow: none;
+    /* מסיר כל צל שנוסף על הכפתור */
+    padding-right: 0;
+    /* מסיר את הריפוד הימני */
+}
+
 @media screen and (max-width: 768px) {
     .player-list-container {
         padding: 1rem;
