@@ -143,6 +143,45 @@ button:hover::after {
     right: 20px;
 }
 
+/* הוספת סגנון למרכוז הכפתור */
+.select-all-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.select-all-button {
+    /* ניתן להוסיף סגנונות לכפתור אם רוצים */
+    background: var(--goal-red);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    color: var(--ball-white);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* ביטול סמל הגביע */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ביטול סמל הגביע בעת מעבר עם העכבר */
+.select-all-button::after {
+    content: none;
+}
+
+.select-all-button:hover {
+    background: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+    padding-right: 1.5rem;
+}
+
+
 .player-list {
     width: 100%;
     display: grid;
@@ -252,15 +291,26 @@ button:hover::after {
     padding: 2rem;
     border-radius: 20px;
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--ball-white);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    color: var(--ball-white);
 }
 
 .team::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0.7;
+    z-index: 1;
+    border-bottom-left-radius: 100%;
+}
+
+.team::after {
     content: "";
     position: absolute;
     top: 0;
@@ -268,7 +318,29 @@ button:hover::after {
     right: 0;
     height: 5px;
     background: var(--accent-color);
+    z-index: 3;
 }
+
+.team-logo {
+    position: absolute;
+    top: 10px;
+    right: 7px;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    opacity: 75%;
+    overflow: hidden;
+}
+
+.team-content {
+    position: relative;
+    z-index: 2;
+}
+
 
 .team:hover {
     transform: translateY(-10px);
@@ -280,6 +352,7 @@ button:hover::after {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     color: var(--ball-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .team ul {
@@ -396,6 +469,14 @@ button:hover::after {
         margin-right: 1rem;
     }
 
+    .team {
+        background-size: 100px, cover;
+    }
+    .team-logo {
+        width: 80px;
+        height: 80px;
+    }
+
     .player-list {
         grid-template-columns: 1fr;
     }
@@ -431,7 +512,14 @@ button:hover::after {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.8rem;
             }
-
+            
+            .team {
+                background-size: 75px, cover;
+            }
+            .team-logo {
+                width: 60px;
+                height: 60px;
+            }
             .add-player-button {
                 width: 100%;
             }

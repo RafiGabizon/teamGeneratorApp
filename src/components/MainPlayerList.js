@@ -8,7 +8,7 @@ import Instructions from './Instructions';
 const MainPlayerList = () => {
   const [players, setPlayers] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([]);
-  const [groups, setGroups] = useState({ אדומה: [], שחורה: [], לבנה: [] });
+  const [groups, setGroups] = useState({ אדומה: [],שחורה: [], לבנה: [] });
   const [newPlayer, setNewPlayer] = useState({ name: '', level: 1, playStyle: '' });
   const [editingPlayerIndex, setEditingPlayerIndex] = useState(null);
 
@@ -33,6 +33,16 @@ const MainPlayerList = () => {
       }
       return prev;
     });
+  };
+
+   const toggleSelectAllPlayers = () => {
+    if (selectedPlayers.length === players.length) {
+      // אם כל השחקנים נבחרו, נבטל את הבחירה בכולם
+      setSelectedPlayers([]);
+    } else {
+      // אם לא כל השחקנים נבחרו, נבחר את כולם
+      setSelectedPlayers(players);
+    }
   };
 
   const handleAssignTeams = () => {
@@ -146,9 +156,13 @@ const MainPlayerList = () => {
         handlePlayerSelect={handlePlayerSelect}
         handleEditPlayer={handleEditPlayer}
         handleDeletePlayer={handleDeletePlayer}
+        toggleSelectAllPlayers={toggleSelectAllPlayers}
+        
       />
-    <div className="assign-teams-button-container">
-        <button className="assign-teams-button" onClick={handleAssignTeams}>יאללה כוחות!</button>
+      <div className="assign-teams-button-container">
+        <button className="assign-teams-button" onClick={handleAssignTeams}>
+          יאללה כוחות!
+        </button>
       </div>
       <TeamsDisplay groups={groups} />
     </div>

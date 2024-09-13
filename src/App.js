@@ -1,9 +1,15 @@
 import React from 'react';
-import MainPlayerList from './components/MainPlayerList'; // ייבוא קומפוננטת הרשימה הראשית
+import MainPlayerList from './components/MainPlayerList';
 import './App.css';
-import logo from './SoccerTeamGen.png';
+import logo from './assets/SoccerTeamGen.png';
+import pdfFile from './assets/Rafi Gabizon CV_FullStack.pdf';
 
 function App() {
+  const handlePdfClick = (event) => {
+    event.preventDefault();
+    window.open(pdfFile, '_blank');
+  };
+
   return (
     <div className="App">
       <header className="header">
@@ -13,10 +19,15 @@ function App() {
         </div>
       </header>
       <main>
-        <MainPlayerList /> {/* קומפוננטת הרשימה הראשית */}
+        <MainPlayerList />
       </main>
       <footer className="footer">
-        <p>© כל הזכויות שמורות לרפי גביזון</p>
+        <p>
+          © כל הזכויות שמורות ל
+          <a href={pdfFile} onClick={handlePdfClick}>
+            רפי גביזון
+          </a>
+        </p>
       </footer>
     </div>
   );
