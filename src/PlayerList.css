@@ -479,7 +479,15 @@ button:hover::after {
     /* משתמש בגופן של התצוגה ההורית (כמו קישור) */
     position: relative;
     /* מאפשר למקם אלמנטים יחסיים לתוך הכפתור */
-    box-shadow: none;
+    margin-right: 10px;
+    /* רווח בין הכפתורים */
+    margin-left: 10px;
+    /* רווח בין הכפתורים */
+}
+
+.pdf-link-button:last-child {
+    margin-right: 0;
+    /* מסיר את הרווח האחרון אחרי הכפתור האחרון */
 }
 
 .pdf-link-button:focus {

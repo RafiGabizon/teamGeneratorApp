@@ -3,7 +3,7 @@ import MainPlayerList from './components/MainPlayerList';
 import './App.css';
 import logo from './assets/SoccerTeamGen.png';
 import pdfFile from './assets/Rafi Gabizon CV_FullStack.pdf';
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 function App() {
   const handlePdfClick = (event) => {
@@ -14,6 +14,11 @@ function App() {
   const handleLinkedinClick = (event) => {
     event.preventDefault();
     window.open('https://www.linkedin.com/in/rafigabizon', '_blank');
+  };
+
+  const handleWhatsappClick = (event) => {
+    event.preventDefault();
+    window.open('https://wa.me/+972525754567', '_blank'); // החלף את yourphonenumber עם מספר הטלפון שלך בוואטסאפ
   };
 
   return (
@@ -32,8 +37,12 @@ function App() {
           © כל הזכויות שמורות ל
           <button onClick={handlePdfClick} className="pdf-link-button">
             רפי גביזון
-          </button>   |   <button onClick={handleLinkedinClick} className="pdf-link-button">
+          </button>
+          <button onClick={handleLinkedinClick} className="pdf-link-button">
             <FaLinkedin />
+          </button>
+          <button onClick={handleWhatsappClick} className="pdf-link-button">
+            <FaWhatsapp />
           </button>
         </p>
       </footer>
