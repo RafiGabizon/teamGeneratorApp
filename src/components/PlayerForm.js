@@ -8,11 +8,12 @@ const PlayerForm = ({ newPlayer, setNewPlayer, handleAddOrEditPlayer, editingPla
     <div className="player-form">
       <h3>{editingPlayerIndex !== null ? 'עריכת שחקן' : 'הוספת שחקן חדש'}</h3>
       <div className="form-row">
-        <input
+        <input 
           type="text"
           placeholder="שם השחקן"
           value={newPlayer.name}
           onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })}
+          required
         />
         <input
           type="number"
@@ -21,10 +22,12 @@ const PlayerForm = ({ newPlayer, setNewPlayer, handleAddOrEditPlayer, editingPla
           min="1"
           max="5"
           onChange={(e) => setNewPlayer({ ...newPlayer, level: parseInt(e.target.value) })}
+          required
         />
         <select
           value={newPlayer.playStyle}
           onChange={(e) => setNewPlayer({ ...newPlayer, playStyle: e.target.value })}
+          required
         >
           <option value="">בחר אופי משחק</option>
           {playStyles.map((style) => (

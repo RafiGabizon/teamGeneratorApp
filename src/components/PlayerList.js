@@ -25,13 +25,13 @@ const PlayerList = ({
         ) : (
           players.map((player, index) => (
             <PlayerItem
-              key={player.name}
+              key={player.id}
               player={player}
               index={index}
               handlePlayerSelect={handlePlayerSelect}
               handleEditPlayer={handleEditPlayer}
               handleDeletePlayer={handleDeletePlayer}
-              isSelected={selectedPlayers.some((p) => p.name === player.name)}
+              isSelected={selectedPlayers.includes(player.id)}
             />
           ))
         )}
